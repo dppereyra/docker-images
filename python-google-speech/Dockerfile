@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM dppereyra/ffmpeg-audio
 
 RUN apk add --no-cache python3 \
     && python3 -m ensurepip \
@@ -26,7 +26,7 @@ RUN apk add --no-cache python3 \
     && pip install scipy \
     && pip install scikit-learn \
     && pip install bcrypt \
-    && pip install grpcio \
+    && pip install google-cloud-speech \
     && find /usr/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
