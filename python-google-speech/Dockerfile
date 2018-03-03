@@ -28,6 +28,7 @@ RUN apk add --no-cache python3 \
     && pip install bcrypt \
     && pip install google-cloud-speech \
     && pip install json-logging-py \
+    && pip install twisted \
     && find /usr/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
