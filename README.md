@@ -6,12 +6,11 @@ ffmpeg-audio
 
 Docker image based on [jrottenberg][1]'s build and leaving only the audio stuffs.
 
-python-google-speech
+python-science
 -----
 
-Docker image based on [noondotcom][2]'s and [frolvlad][3]'s build merged as one.
-Used for integration with google speech api.
+The ffmpeg-audio image and [frolvlad][3]'s build merged as one.
+Basic python image with scientific tools.
 
 [1]: https://hub.docker.com/r/jrottenberg/ffmpeg/
-[2]: https://hub.docker.com/r/noondotcom/alpine-3.6-python-3.6-grpc/
-[3]: https://hub.docker.com/u/frolvlad/
+[2]: https://hub.docker.com/u/frolvlad/
