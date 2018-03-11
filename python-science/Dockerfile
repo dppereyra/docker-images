@@ -1,5 +1,8 @@
 FROM dppereyra/ffmpeg-audio
 
+RUN mkdir -p /applib
+COPY stack-fix.c /applib/
+
 RUN apk add --no-cache python3 \
     && python3 -m ensurepip \
     && rm -r /usr/lib/python*/ensurepip \
@@ -21,14 +24,12 @@ RUN apk add --no-cache python3 \
         ca-certificates \
     && update-ca-certificates \
     && ln -s locale.h /usr/include/xlocale.h \
+    && gcc -shared -fPIC /applib/stack-fix.c -o /applib/stack-fix.so \
     && pip install numpy \
     && pip install pandas \
     && pip install scipy \
     && pip install scikit-learn \
     && pip install bcrypt \
-    && pip install google-cloud-speech \
-    && pip install json-logging-py \
-    && pip install tornado==4.* \
     && find /usr/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
