@@ -26,10 +26,11 @@ RUN apk add --no-cache python3 \
     && ln -s locale.h /usr/include/xlocale.h \
     && gcc -shared -fPIC /applib/stack-fix.c -o /applib/stack-fix.so \
     && pip install numpy \
-    && pip install pandas \
-    && pip install scipy \
-    && pip install scikit-learn \
-    && pip install bcrypt \
+    && pip install \
+        pandas \
+        scipy \
+        scikit-learn \
+        bcrypt \
     && find /usr/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
