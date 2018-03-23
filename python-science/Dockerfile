@@ -10,6 +10,7 @@ RUN apk add --no-cache python3 \
     && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
     && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
     && rm -r /root/.cache \
+    && apk update \
     && apk add --no-cache libstdc++ lapack-dev \
     && apk add --no-cache --virtual=.build-dependencies \
         g++ \
@@ -35,4 +36,5 @@ RUN apk add --no-cache python3 \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
     && apk del .build-dependencies \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && rm -rf /tmp/*
