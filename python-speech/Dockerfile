@@ -4,7 +4,7 @@
 # and      https://hub.docker.com/r/frolvlad/alpine-python-machinelearning/
 #
 
-FROM dppereyra/python-ffmpeg-audio
+FROM dppereyra/python-ffmpeg-audio:py3.6-ffmpeg3.4
 
 RUN mkdir -p /applib
 COPY stack-fix.c /applib/
@@ -21,6 +21,7 @@ RUN apk update \
         build-base \
         linux-headers \
         libffi-dev \
+        openssl-dev \
         openblas-dev \
         icu-dev \
     && update-ca-certificates \
