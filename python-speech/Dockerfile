@@ -1,11 +1,10 @@
 # ffmpeg - http://ffmpeg.org/download.html
 #
 # Based on https://hub.docker.com/r/jrottenberg/ffmpeg/
-#
+# and      https://hub.docker.com/r/frolvlad/alpine-python-machinelearning/
 #
 
-# FROM dppereyra/python-ffmpeg-audio
-FROM test-audio
+FROM dppereyra/python-ffmpeg-audio
 
 RUN mkdir -p /applib
 COPY stack-fix.c /applib/
