@@ -4,10 +4,18 @@
 #
 #
 
-FROM        alpine:3.7 AS base
+FROM        python:3.6-alpine3.7 AS base
 
-RUN         apk  add --no-cache --update libgcc libstdc++ ca-certificates libcrypto1.0 libssl1.0 libgomp expat
-
+RUN         apk  add --no-cache --update \
+                libgcc \
+                libstdc++ \
+                ca-certificates \
+                libcrypto1.0 \
+                libssl1.0 \
+                libgomp \
+                expat \
+            && rm -rf /var/cache/apk/* \
+            && rm -rf /tmp/*
 
 FROM        base AS build
 
@@ -31,27 +39,27 @@ ARG         OGG_SHA256SUM="e19ee34711d7af328cb26287f4137e70630e7261b17cbe3cd4101
 ARG         OPUS_SHA256SUM="77db45a87b51578fbc49555ef1b10926179861d854eb2613207dc79d9ec0a9a9  opus-1.2.tar.gz"
 ARG         VORBIS_SHA256SUM="6efbcecdd3e5dfbf090341b485da9d176eb250d893e3eb378c428a2db38301ce  libvorbis-1.3.5.tar.gz"
 
-RUN     buildDeps="autoconf \
-                   automake \
-                   bash \
-                   binutils \
-                   bzip2 \
-                   cmake \
-                   curl \
-                   coreutils \
-                   diffutils \
-                   file \
-                   g++ \
-                   gcc \
-                   gperf \
-                   libtool \
-                   make \
-                   python \
-                   openssl-dev \
-                   tar \
-                   yasm \
-                   zlib-dev \
-                   expat-dev" && \
+RUN         buildDeps="\
+                autoconf \
+                automake \
+                bash \
+                binutils \
+                bzip2 \
+                cmake \
+                curl \
+                coreutils \
+                diffutils \
+                file \
+                g++ \
+                gcc \
+                gperf \
+                libtool \
+                make \
+                openssl-dev \
+                tar \
+                yasm \
+                zlib-dev \
+                expat-dev" && \
         apk  add --no-cache --update ${buildDeps}
 ## opencore-amr https://sourceforge.net/projects/opencore-amr/
 RUN \
