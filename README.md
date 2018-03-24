@@ -1,22 +1,36 @@
 Docker Images For My Projects
 ======
 
-ffmpeg-audio
+Versions
+-----
+- python: 3.6
+- ffmpeg: 3.4.2
+- numpy: 1.14
+- scipy: 1.0
+- pandas: 0.22
+- scikit-learn: 0.19
+- pydub: 0.21
+- nltk: 3.2
+- spacy: 2.0
+- polyglot: 16.7
+- tornado: 5.0
+
+python-ffmpeg-audio
 -----
 
-Docker image based on [jrottenberg][1]'s build and leaving only the audio stuffs.
-
-python-science
------
-
-The ffmpeg-audio image and [frolvlad][3]'s build merged as one.
-Basic python image with scientific tools.
+Python image with ffmpeg audio based on [jrottenberg][1]'s build.
 
 python-speech
 -----
 
-Same as python-science but with spacy and polyglot.
+python-ffmpeg-audio with scientific and nlp packages.
+NLP package install based on [frolvlad][2]'s build.
+
+tornado-speech
+-----
+
+python-speech with tornado
 
 
 [1]: https://hub.docker.com/r/jrottenberg/ffmpeg/
-[2]: https://hub.docker.com/u/frolvlad/
+[2]: https://hub.docker.com/r/frolvlad/alpine-python-machinelearning/
