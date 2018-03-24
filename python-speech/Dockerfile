@@ -1,15 +1,6 @@
-FROM dppereyra/ffmpeg-audio
+FROM dppereyra/python-science
 
-RUN mkdir -p /applib
-COPY stack-fix.c /applib/
-
-RUN apk add --no-cache python3 \
-    && python3 -m ensurepip \
-    && rm -r /usr/lib/python*/ensurepip \
-    && pip3 install --upgrade pip setuptools \
-    && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
-    && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
-    && rm -r /root/.cache \
+RUN apk update \
     && apk add --no-cache libstdc++ lapack-dev icu-dev\
     && apk add --no-cache --virtual=.build-dependencies \
         g++ \
@@ -24,13 +15,7 @@ RUN apk add --no-cache python3 \
         ca-certificates \
     && update-ca-certificates \
     && ln -s locale.h /usr/include/xlocale.h \
-    && gcc -shared -fPIC /applib/stack-fix.c -o /applib/stack-fix.so \
-    && pip install numpy \
     && pip install \
-        pandas \
-        scipy \
-        scikit-learn \
-        bcrypt \
         spacy \
         polyglot \
         pyicu \
@@ -40,4 +25,5 @@ RUN apk add --no-cache python3 \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
     && apk del .build-dependencies \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && rm -rf /tmp/*
