@@ -4,7 +4,7 @@ Docker Images For My Projects
 Versions
 -----
 - python: 3.6
-- ffmpeg: 3.4.2
+- ffmpeg: 3.4
 - numpy: 1.14
 - scipy: 1.0
 - pandas: 0.22
