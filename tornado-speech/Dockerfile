@@ -3,6 +3,10 @@
 
 FROM dppereyra/python-speech
 
+EXPOSE 80
+EXPOSE 443
+EXPOSE 8080
+
 RUN apk update \
     && apk add --no-cache --virtual=.build-dependencies \
         g++ \
@@ -23,3 +27,9 @@ RUN apk update \
     && apk del .build-dependencies \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
+
+VOLUME [ \
+    "/usr/local/lib/python3.6/site-packages/spacy/data", \
+    "/root/polyglot_data", \
+    "/root/nltk_data" \
+]
