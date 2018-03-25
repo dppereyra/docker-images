@@ -21,7 +21,7 @@ RUN apk update \
     && pip install \
         tornado \
         wsaccel \
-    && find /usr/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
+    && find /usr/local/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
     && apk del .build-dependencies \
