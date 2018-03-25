@@ -44,7 +44,7 @@ RUN apk update \
         pyicu==2.0.* \
         pycld2==0.31 \
         morfessor==2.0.* \
-    && find /usr/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
+    && find /usr/local/lib/python3.*/ -name 'tests' -exec rm -r '{}' + \
     && rm /usr/include/xlocale.h \
     && rm -r /root/.cache \
     && apk del .build-dependencies \
