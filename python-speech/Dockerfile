@@ -52,7 +52,10 @@ RUN apk update \
     && rm -rf /tmp/*
 
 VOLUME [ \
-    "/usr/local/lib/python3.6/site-packages/spacy/data", \
-    "/root/polyglot_data", \
-    "/root/nltk_data" \
+    "/usr/local/lib/python3.6/site-packages/spacy/data",       \
+    "/root/polyglot_data",                                     \
+    "/root/nltk_data",                                         \
+    "/usr/local/lib/python3.6/site-packages/en_core_web_sm",   \
+    "/usr/local/lib/python3.6/site-packages/en_core_web_lg",   \
+    "/usr/local/lib/python3.6/site-packages/en_vectors_web_lg" \
 ]
